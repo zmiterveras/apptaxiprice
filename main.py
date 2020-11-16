@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_wtf import FlaskForm
-from wtforms import IntegerField, FloatField, SubmitField
+from wtforms import FloatField, SubmitField
 from wtforms.validators import DataRequired
 
 app = Flask(__name__)
@@ -8,14 +8,15 @@ app.config['SECRET_KEY'] = 'hard to guess string'
 
 
 class NameForm(FlaskForm):
-    pr_city = IntegerField('Пробег город, км', validators=[DataRequired()])
-    pr_state = IntegerField('Пробег трасса, км', validators=[DataRequired()])
-    med_trip_city = IntegerField('Средняя поездка город, км', validators=[DataRequired()])
-    med_trip_state = IntegerField('Средняя поездка трасса, км', validators=[DataRequired()])
-    taxi_rate_city = FloatField('Тариф город, руб', validators=[DataRequired()])
-    taxi_rate_state = FloatField('Тариф трасса, руб', validators=[DataRequired()])
-    rate_boarding = FloatField('Стоимость посадки, руб', validators=[DataRequired()])
-    include_trip = IntegerField('Включенные км', validators=[DataRequired()])
+    mes = 'Значение должно быть числом вида: 2 или 2.3'
+    pr_city = FloatField('Пробег город, км', validators=[DataRequired(mes)])
+    pr_state = FloatField('Пробег трасса, км', validators=[DataRequired(mes)])
+    med_trip_city = FloatField('Средняя поездка город, км', validators=[DataRequired(mes)])
+    med_trip_state = FloatField('Средняя поездка трасса, км', validators=[DataRequired(mes)])
+    taxi_rate_city = FloatField('Тариф город, руб', validators=[DataRequired(mes)])
+    taxi_rate_state = FloatField('Тариф трасса, руб', validators=[DataRequired(mes)])
+    rate_boarding = FloatField('Стоимость посадки, руб', validators=[DataRequired(mes)])
+    include_trip = FloatField('Включенные км', validators=[DataRequired(mes)])
     submit = SubmitField('Рассчитать')
 
 

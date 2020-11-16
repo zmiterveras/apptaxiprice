@@ -7,16 +7,38 @@
 {% block body %}
 <div class="container">
     <h1>Count Taxi_price</h1>
-    <p class="text-center">Для рассчета заполните соответствующие графы формы ниже и нажмите "OK"</p>
-    <table class="table table-bordered">
+    <hr>
+    <br>
+    <p class="text-center">Для рассчета заполните соответствующие поля формы ниже и нажмите "Рассчитать"</p>
+    <br>
+    <table class="table table-borderless">
         <tbody>
             <tr>
-                <td><p><img src="static/images/auto_d2.png" width="339" height="300" class="d-inline-block align-top" alt="auto-vs-taxi" ></p></td>
-                <td>Otto</td>
+                <td><p><img src="static/images/auto_d2.png" width="339" height="300" class="d-inline-block align-top" alt="auto" ></p></td>
+                <td rowspan="2">
+                    <form method="post">
+                        {{ form.hidden_tag() }}
+                        <br><br><br>
+                        {% for field in form if field.name not in ['csrf_token', 'submit'] %}
+                        <p>{{ field.label }}
+                            {% if field.errors %}
+                                {{ field(class="form-control is-invalid") }}
+                            <span class="invalid-feedback">
+                                {% for e in field.errors %}
+                                {{ e }}
+                                {% endfor %}
+                            </span>
+                            {% else %}
+                                {{ field() }}
+                            {% endif %}
+                        {% endfor %}
+                        <br>
+                        <p>{{ form.submit() }}</p>
+                    </form>
+                </td>
             </tr>
             <tr>
-                <td><p><img src="static/images/taxi_d2.png" width="313" height="183" class="d-inline-block align-top" alt="auto-vs-taxi" ></p></td>
-                <td>Thornton</td>
+                <td><p><img src="static/images/taxi_d2.png" width="313" height="183" class="d-inline-block align-top" alt="taxi" ></p></td>
             </tr>
         </tbody>
     </table>

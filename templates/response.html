@@ -7,7 +7,30 @@
 {% block body %}
 
 <div class="container">
-  <h1>Your result:</h1>
-  <p class="text-center">!</p>
+  <h2>Вас ждут следущие затраты:</h2>
+  <table class="table table-borderless">
+        <tbody>
+            <tr>
+                <td><p><img src="static/images/city.jpg" width="626" height="450" class="d-inline-block align-top" alt="city" ></p></td>
+                <td>
+                  <h3>Поездки в городе:</h3>
+                  <p class="text-center">{{ p_city }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td><p><img src="static/images/route.jpg" width="626" height="450" class="d-inline-block align-top" alt="route" ></p></td>
+                <td>
+                  <h3>Поездки по трассе:</h3>
+                  <p class="text-center">{{ p_state }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                  <h1>Полные затраты:</h1>
+                  <p class="text-center"><b>{{ p }}</b></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 {% endblock %}
